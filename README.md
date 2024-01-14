@@ -1,0 +1,1 @@
+**akai_hana**'s personal collection of scripts, ranging from simple shell aliases and useful keybinds, to more elaborate scripts, all of these aimed towards saving me time on the long run, and making my experience more efficient.
