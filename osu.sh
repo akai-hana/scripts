@@ -1,6 +1,4 @@
-#!/bin/bash
-
-
+#!/bin/sh
 # Launch osu-lazer and capture PID of the wrapper process
 flatpak run sh.ppy.osu &
 OSU_PID=$!
