@@ -1,20 +1,15 @@
 #!/bin/sh
-# Launch osu-lazer and capture PID of the wrapper process
+# Launches osu along with OTD, cleans OTD up when exiting osu
+
+# launch osu and OTD
 flatpak run sh.ppy.osu &
 OSU_PID=$!
-
-# Launch otd-daemon
 flatpak run net.opentabletdriver.OpenTabletDriver &
 
-# Wait for processes to initialize
-sleep 3s
-
-# Set real-time priority for OpenTabletDriver
+# set real-time priority
+sleep 1s
 doas chrt -f -p 99 $(ps -e | grep OpenTabletDrive | awk '{print $1}')
 
-# Wait for osu-lazer to exit (event-driven - uses no CPU while waiting)
+# clean-up
 wait $OSU_PID
-
-# Cleanup: kill OTD processes when osu-lazer exits
-$DISTROBOX pkill -x otd-daemon
-$DISTROBOX pkill -x otd-gui
+pkill OpenTabletDriver
