@@ -1,5 +1,5 @@
 #!/bin/sh
-sleep 3
+sleep 5
 pkill -9 flatpak
 pkill -9 arrpc
 pkill -9 node
